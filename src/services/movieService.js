@@ -1,4 +1,5 @@
 const movies = [{
+    _id: 1,
     title: 'Jungle cruise',
     genre: 'adventure',
     director: 'Stallone',
@@ -8,10 +9,12 @@ const movies = [{
     description: 'Nice movie'
   }];
 
+
   exports.getAll = () => {
       return movies.slice();
   }
 
 exports.create = (movieData) => {
+  movieData._id =movies[movies.length -1]._id +1;
     movies.push(movieData);
 }
