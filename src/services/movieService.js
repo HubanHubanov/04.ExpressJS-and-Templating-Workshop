@@ -3,15 +3,32 @@ const movies = [{
     title: 'Jungle cruise',
     genre: 'adventure',
     director: 'Stallone',
-    date: '2222',
+    year: '2222',
     imageUrl: '/img/the-little-mermaid.jpg',
-    rating: '8.1',
+    rating: '5',
     description: 'Nice movie'
-  }];
+  }
+];
 
 
   exports.getAll = () => {
       return movies.slice();
+  }
+
+  exports.search = (title, genre, year) => {
+     let result= movies.slice();
+     if(title) {
+      result = result.filter(movie => movie.title.toLocaleLowerCase().includes(title.toLowerCase()))
+     }
+
+     if(genre) {
+      result = result.filter(movie => movie.genre.toLowerCase() === genre.toLowerCase());
+     }
+
+     if(year) {
+      result = result.filter(movie => movie.year === year)
+     }
+     return result
   }
 
   exports.getOne = (movieId) => {
